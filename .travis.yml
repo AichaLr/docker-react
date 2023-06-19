@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -6,4 +7,4 @@ before_install:
   - docker build -t aicha/docker-react -f Dockerfile.dev .
 #the -- --coverage to exit after the tests are completed because npm run test doesnt exit
 script:
-  - docker run  aicha/docker-react npm run test -- --coverage
+  - docker run -e CI=true  aicha/docker-react npm run test
